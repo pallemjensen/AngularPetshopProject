@@ -1,0 +1,4 @@
+<ul>
+  <li *ngFor="let customer of customers">{{customer.id + ' '}}{{customer.firstName}} {{customer.lastName}} {{customer.address}}</li>
+</ul>
+<button (click)="countUpOne()">Click me</button>

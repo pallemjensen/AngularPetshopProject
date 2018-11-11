@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +8,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 1;
 
-  items = ['Items', 'Item2', 'Item3'];
-
-  countUpOne()
-  {
-    this.title++;
-  }
 }
