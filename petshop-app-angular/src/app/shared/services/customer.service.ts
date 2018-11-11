@@ -17,4 +17,9 @@ export class CustomerService {
   {
       return this.customers;
   }
+
+  addCustomer(customer: Customer)
+  {
+      this.customers.push(customer);
+  }
 }
