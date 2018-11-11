@@ -16,14 +16,4 @@ export class CustomersListComponent implements OnInit {
   ngOnInit() {
     this.customers = this.customerService.getCustomers();
   }
-
-  addCustomer()
-  {
-      this.customerService.addCustomer({
-        id: 3,
-        firstName: 'Sue',
-        lastName: 'Poulsen',
-        address: 'Sunny Vale'
-      });
-  }
 }
