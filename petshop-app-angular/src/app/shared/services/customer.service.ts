@@ -36,4 +36,9 @@ export class CustomerService {
     const index = this.customers.indexOf(custToUpdate);
     this.customers[index] = customer;
   }
+
+  deleteCustomer(id: number)
+  {
+    this.customers = this.customers.filter(cust => cust.id !== id);
+  }
 }
