@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'petshop-app-angular';
+  title = 1;
+
+  items = ['Items', 'Item2', 'Item3'];
+
+  countUpOne()
+  {
+    this.title++;
+  }
 }
