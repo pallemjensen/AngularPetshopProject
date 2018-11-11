@@ -22,4 +22,9 @@ export class CustomerService {
   {
       this.customers.push(customer);
   }
+
+  getCustomerById(id: number)
+  {
+    return this.customers.find(cust => cust.id === id);
+  }
 }
