@@ -9,7 +9,7 @@ import {FormControl, FormGroup} from "@angular/forms";
   styleUrls: ['./customer-update.component.css']
 })
 export class CustomerUpdateComponent implements OnInit {
-
+    id: number;
   customerForm = new FormGroup( {
     firstName: new FormControl(''),
     lastName: new FormControl(''),
@@ -21,8 +21,8 @@ export class CustomerUpdateComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    const id = +this.route.snapshot.paramMap.get('id');
-    const customer = this.customerService.getCustomerById(id);
+    this.id = +this.route.snapshot.paramMap.get('id');
+    const customer = this.customerService.getCustomerById(this.id);
     this.customerForm.patchValue({
       firstName: customer.firstName,
       lastName: customer.lastName,
@@ -31,9 +31,10 @@ export class CustomerUpdateComponent implements OnInit {
   }
 
   save() {
-    /*const customer = this.customerForm.value;
-    this.customerService.addCustomer(customer);
-    this.customerForm.reset();
+    const customer = this.customerForm.value;
+    customer.id = this.id;
+    this.customerService.updateCustomer(customer);
+    /*this.customerForm.reset();
     this.router.navigateByUrl('/customers');*/
   }
 }

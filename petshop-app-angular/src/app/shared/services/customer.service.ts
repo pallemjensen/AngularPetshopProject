@@ -29,4 +29,11 @@ export class CustomerService {
   {
     return this.customers.find(cust => cust.id === id);
   }
+
+  updateCustomer(customer: Customer)
+  {
+    const custToUpdate = this.customers.find(cust => customer.id === cust.id);
+    const index = this.customers.indexOf(custToUpdate);
+    this.customers[index] = customer;
+  }
 }
