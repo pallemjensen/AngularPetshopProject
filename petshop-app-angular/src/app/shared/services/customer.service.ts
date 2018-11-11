@@ -5,12 +5,13 @@ import {Customer} from "../models/customer";
   providedIn: 'root'
 })
 export class CustomerService {
-  customers: Customer[] = [];
+  customers: Customer[];
+  id = 1;
 
   constructor() {
     this.customers = [
-      {id: 1, firstName: 'John', lastName: 'Hansen', address: 'Summer Street 10'},
-      {id: 2, firstName: 'Palle', lastName: 'Jensen', address: 'Winter Street 10'}];
+      {id: this.id++, firstName: 'John', lastName: 'Hansen', address: 'Summer Street 10'},
+      {id: this.id++, firstName: 'Palle', lastName: 'Jensen', address: 'Winter Street 10'}];
   }
 
   getCustomers(): Customer[]
@@ -20,7 +21,8 @@ export class CustomerService {
 
   addCustomer(customer: Customer)
   {
-      this.customers.push(customer);
+    customer.id = this.id++;
+    this.customers.push(customer);
   }
 
   getCustomerById(id: number)

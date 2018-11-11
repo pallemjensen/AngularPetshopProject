@@ -20,13 +20,8 @@ export class CustomerAddComponent implements OnInit {
   ngOnInit() {
   }
 
-  save()
-  {
-    this.customerService.addCustomer({
-      id: 3,
-      firstName: 'Sue',
-      lastName: 'Poulsen',
-      address: 'Sunny Vale'
-    });
+  save() {
+    const customer = this.customerForm.value;
+    this.customerService.addCustomer(customer);
   }
 }
