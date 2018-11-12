@@ -40,8 +40,8 @@ export class CustomerService {
     this.customers[index] = customer;
   }
 
-  deleteCustomer(id: number)
+  deleteCustomer(id: number): Observable<any>
   {
-    this.customers = this.customers.filter(cust => cust.id !== id);
+    return this.http.delete(this.apiUrl + '/' + id);
   }
 }

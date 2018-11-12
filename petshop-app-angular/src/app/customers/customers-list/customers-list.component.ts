@@ -13,7 +13,13 @@ export class CustomersListComponent implements OnInit {
 
   constructor(private customerService: CustomerService) { }
 
-  ngOnInit() {
+  ngOnInit()
+  {
+    this.refresh();
+  }
+
+  refresh()
+  {
     this.customerService.getCustomers()
       .subscribe(listOfCustomers =>
       {
@@ -23,7 +29,12 @@ export class CustomersListComponent implements OnInit {
 
   delete(id: number)
   {
-    this.customerService.deleteCustomer(id);
+    this.customerService.deleteCustomer(id)
+      .subscribe(message =>
+      {
+        console.log('Deleted user, got message: ' + message);
+        this.refresh();
+      });
     //this.customers = this.customerService.getCustomers();
   }
 }

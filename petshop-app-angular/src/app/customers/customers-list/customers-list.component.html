@@ -4,7 +4,7 @@
     <a routerLink="/customers/{{customer.id}}">
       {{customer.firstName}} {{customer.lastName}} {{customer.address}} </a>
     <button routerLink="/customer-update/{{customer.id}}">Update</button>
-    <button (click)="delete(customer.id)">Delete</button>
+    <button (click)="delete(customer.customerId)">Delete</button>
   </li>
 </ul>
 <h4 *ngIf="!customers">Loading.....</h4>
