@@ -7,7 +7,6 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class CustomerService {
-  customers: Customer[];
   apiUrl = ' http://localhost:5000/api/customer';
 
   constructor(private http: HttpClient) {
@@ -18,10 +17,9 @@ export class CustomerService {
     return this.http.get<Customer[]>( this.apiUrl);
   }
 
-  addCustomer(customer: Customer)
+  addCustomer(customer: Customer): Observable<Customer>
   {
-    // customer.customerId = this.id++;
-    // this.customers.push(customer);
+    return this.http.post<Customer>(this.apiUrl, customer);
   }
 
   getCustomerById(id: number): Observable<Customer>

@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {CustomerService} from "../../shared/services/customer.service";
 import {FormControl, FormGroup} from "@angular/forms";
-import {Customer} from "../../shared/models/customer";
 
 @Component({
   selector: 'app-customer-update',
@@ -37,6 +36,7 @@ export class CustomerUpdateComponent implements OnInit {
     const customer = this.customerForm.value;
     customer.customerId = this.id;
     //evt order
-    this.customerService.updateCustomer(customer).subscribe(() => {this.router.navigateByUrl('/customers');});
+    this.customerService.updateCustomer(customer)
+      .subscribe(() => {this.router.navigateByUrl('/customers');});
   }
 }
