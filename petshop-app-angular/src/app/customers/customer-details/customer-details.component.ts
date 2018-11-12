@@ -10,12 +10,12 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class CustomerDetailsComponent implements OnInit {
   customer: Customer;
-
   constructor(private route: ActivatedRoute,
     private customerService: CustomerService) { }
 
   ngOnInit() {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.customer = this.customerService.getCustomerById(id);
+    const id = +this.route.snapshot.paramMap.get('customerId');
+    this.customerService.getCustomerById(id)
+      .subscribe(custFromRest => {this.customer = custFromRest; });
   }
 }

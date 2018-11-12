@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {CustomerService} from "../../shared/services/customer.service";
 import {FormControl, FormGroup} from "@angular/forms";
+import {Customer} from "../../shared/models/customer";
 
 @Component({
   selector: 'app-customer-update',
@@ -10,7 +11,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 })
 export class CustomerUpdateComponent implements OnInit {
     id: number;
-  customerForm = new FormGroup( {
+    customerForm = new FormGroup( {
     firstName: new FormControl(''),
     lastName: new FormControl(''),
     address: new FormControl('')
@@ -21,20 +22,21 @@ export class CustomerUpdateComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    this.id = +this.route.snapshot.paramMap.get('id');
-    const customer = this.customerService.getCustomerById(this.id);
+    this.id = +this.route.snapshot.paramMap.get('customerId');
+    this.customerService.getCustomerById(this.id)
+      .subscribe(custFromRest => {
     this.customerForm.patchValue({
-      firstName: customer.firstName,
-      lastName: customer.lastName,
-      address: customer.address
+      firstName: custFromRest.firstName,
+      lastName: custFromRest.lastName,
+      address: custFromRest.address
     });
-  }
+  });
+    }
 
   save() {
     const customer = this.customerForm.value;
-    customer.id = this.id;
-    this.customerService.updateCustomer(customer);
-    /*this.customerForm.reset();
-    this.router.navigateByUrl('/customers');*/
+    customer.customerId = this.id;
+    //evt order
+    this.customerService.updateCustomer(customer).subscribe(() => {this.router.navigateByUrl('/customers');});
   }
 }

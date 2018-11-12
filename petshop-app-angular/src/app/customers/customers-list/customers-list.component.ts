@@ -35,6 +35,5 @@ export class CustomersListComponent implements OnInit {
         console.log('Deleted user, got message: ' + message);
         this.refresh();
       });
-    //this.customers = this.customerService.getCustomers();
   }
 }

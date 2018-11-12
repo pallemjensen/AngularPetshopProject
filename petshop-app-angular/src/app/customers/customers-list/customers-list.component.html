@@ -1,9 +1,9 @@
 <button routerLink="/customer-add">Add Customer</button>
 <ul *ngIf="customers">
   <li *ngFor="let customer of customers">
-    <a routerLink="/customers/{{customer.id}}">
+    <a routerLink="/customers/{{customer.customerId}}">
       {{customer.firstName}} {{customer.lastName}} {{customer.address}} </a>
-    <button routerLink="/customer-update/{{customer.id}}">Update</button>
+    <button routerLink="/customer-update/{{customer.customerId}}">Update</button>
     <button (click)="delete(customer.customerId)">Delete</button>
   </li>
 </ul>

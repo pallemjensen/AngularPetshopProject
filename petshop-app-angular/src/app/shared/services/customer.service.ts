@@ -8,13 +8,9 @@ import {Observable} from "rxjs";
 })
 export class CustomerService {
   customers: Customer[];
-  id = 1;
   apiUrl = ' http://localhost:5000/api/customer';
 
   constructor(private http: HttpClient) {
-    this.customers = [
-      {id: this.id++, firstName: 'John', lastName: 'Hansen', address: 'Summer Street 10'},
-      {id: this.id++, firstName: 'Palle', lastName: 'Jensen', address: 'Winter Street 10'}];
   }
 
   getCustomers(): Observable<Customer[]>
@@ -24,20 +20,18 @@ export class CustomerService {
 
   addCustomer(customer: Customer)
   {
-    customer.id = this.id++;
-    this.customers.push(customer);
+    // customer.customerId = this.id++;
+    // this.customers.push(customer);
   }
 
-  getCustomerById(id: number)
+  getCustomerById(id: number): Observable<Customer>
   {
-    return this.customers.find(cust => cust.id === id);
+    return this.http.get<Customer>(this.apiUrl + '/' + id);
   }
 
-  updateCustomer(customer: Customer)
+  updateCustomer(customer: Customer): Observable<Customer>
   {
-    const custToUpdate = this.customers.find(cust => customer.id === cust.id);
-    const index = this.customers.indexOf(custToUpdate);
-    this.customers[index] = customer;
+    return this.http.put<Customer>(this.apiUrl + '/' + customer.customerId, customer)
   }
 
   deleteCustomer(id: number): Observable<any>

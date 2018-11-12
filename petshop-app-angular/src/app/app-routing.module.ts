@@ -9,13 +9,13 @@ import {CustomerUpdateComponent} from "./customers/customer-update/customer-upda
 
 const routes: Routes =[
   {
-    path: 'customer-update/:id', component: CustomerUpdateComponent
+    path: 'customer-update/:customerId', component: CustomerUpdateComponent
   },
   {
     path: 'customer-add', component: CustomerAddComponent
   },
   {
-    path: 'customers/:id', component: CustomerDetailsComponent
+    path: 'customers/:customerId', component: CustomerDetailsComponent
   },
   {
     path: 'customers', component: CustomersListComponent
