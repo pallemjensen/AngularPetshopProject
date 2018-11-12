@@ -10,6 +10,7 @@ import {CustomerDetailsComponent} from './customers/customer-details/customer-de
 import {CustomerAddComponent} from './customers/customer-add/customer-add.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {CustomerUpdateComponent} from './customers/customer-update/customer-update.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {CustomerUpdateComponent} from './customers/customer-update/customer-upda
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
