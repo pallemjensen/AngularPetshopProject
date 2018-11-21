@@ -6,13 +6,16 @@ import {CustomersListComponent} from "./customers/customers-list/customers-list.
 import {CustomerDetailsComponent} from "./customers/customer-details/customer-details.component";
 import {CustomerAddComponent} from "./customers/customer-add/customer-add.component";
 import {CustomerUpdateComponent} from "./customers/customer-update/customer-update.component";
+import {LoginComponent} from "./Login/login/login.component";
+import {AuthGuard} from "./guards/authGuard";
 
 const routes: Routes =[
+  { path: 'login', component: LoginComponent },
   {
-    path: 'customer-update/:customerId', component: CustomerUpdateComponent
+    path: 'customer-update/:customerId', component: CustomerUpdateComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'customer-add', component: CustomerAddComponent
+    path: 'customer-add', component: CustomerAddComponent, canActivate: [AuthGuard]
   },
   {
     path: 'customers/:customerId', component: CustomerDetailsComponent

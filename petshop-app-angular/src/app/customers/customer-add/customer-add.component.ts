@@ -24,8 +24,9 @@ export class CustomerAddComponent implements OnInit {
 
   save() {
     const customer = this.customerForm.value;
-    this.customerService.addCustomer(customer);
-    this.customerForm.reset();
-    this.router.navigateByUrl('/customers');
+    this.customerService.addCustomer(customer)
+      .subscribe(() => {
+        this.router.navigateByUrl('/customers');
+      });
   }
 }

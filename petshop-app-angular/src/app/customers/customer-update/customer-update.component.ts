@@ -31,7 +31,7 @@ export class CustomerUpdateComponent implements OnInit {
       address: custFromRest.address
     });
   });
-    }
+  }
 
   save() {
     const customer = this.customerForm.value;
