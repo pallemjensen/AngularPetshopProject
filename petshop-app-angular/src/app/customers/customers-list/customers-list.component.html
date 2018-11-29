@@ -1,11 +1,16 @@
-<button routerLink="/customer-add">Add Customer</button>
+<div class="container">
+  <div class="row">
+<button class="btn btn-primary mt-1" routerLink="/customer-add">Add Customer</button>
+  </div>
+  <div class="row">
 <ul *ngIf="customers">
   <li *ngFor="let customer of customers">
     <a routerLink="/customers/{{customer.customerId}}">
       {{customer.firstName}} {{customer.lastName}} {{customer.address}} </a>
-    <button routerLink="/customer-update/{{customer.customerId}}">Update</button>
-    <button (click)="delete(customer.customerId)">Delete</button>
+    <button routerLink="/customer-update/{{customer.customerId}}" class="btn btn-warning">Update</button>
+    <button (click)="delete(customer.customerId)" class="btn btn-danger">Delete</button>
   </li>
 </ul>
 <h4 *ngIf="!customers">Loading.....</h4>
-
+  </div>
+</div>
